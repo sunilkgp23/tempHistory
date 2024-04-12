@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>SWRedirection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      window.onload = function () {
+        const params = new URLSearchParams(document.location.search);
+        const redirectionURL = params.get("url");
+        console.log("url: ", redirectionURL);
+        if (redirectionURL) {
+          let iframeURL = atob(redirectionURL);
+          console.log("iframeURL: ", iframeURL);
+          document.getElementById("IFRAME").src = iframeURL;
+          document.getElementById("IFRAME").style.display = "flex";
+        }else{
+            document.getElementById('textMsg').innerText = 'URL Not Found! Please try later.'
+        }
+      };
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <p id='textMsg'>Please wait while you are redirected ...</p>
+      <iframe
+        src=""
+        id="IFRAME"
+        style="
+          display: none;
+          position: absolute;
+          width: 100vw;
+          height: 100vh;
+          top: 0;
+          left: 0;
+        "
+        width="100%"
+        marginwidth="0"
+        height="100%"
+        marginheight="0"
+        scrolling="auto"
+      ></iframe>
+    </div>
+  </body>
+</html>
